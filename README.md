@@ -1,0 +1,2 @@
+# quantitativefinancelib
+Python finance library
