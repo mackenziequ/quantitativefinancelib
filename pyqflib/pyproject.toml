@@ -1,0 +1,19 @@
+# pyproject.toml
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qflib"
+version = "0.1.0"
+description = "qflib quant library"
+maintainers = [{name = "Mackenzie Qu", email = "hq3@fordham.edu"}]
+dependencies = ["numpy"]
+license = {text = "Proprietary"}
+
+[tool.setuptools.packages.find]
+where = ["."]
+
+[tool.setuptools.package-data]
+qflib = ["*.pyd", "*.so"]

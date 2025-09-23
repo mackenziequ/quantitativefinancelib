@@ -1,0 +1,6 @@
+# ninja log v6
+0	4	1738177505060403403	clean	1f0117926fe85a19
+1	195	1738177505092821801	qflib/CMakeFiles/qflib.dir/empty.cpp.o	aa9761f8a62cb8e1
+196	230	1738177505288011563	/Users/mackenziequ/Documents/MSQF/Spring2025/AdvancedCpp/qflib/qflib-0.1.0/lib/libqflib-gd.a	95f0e55f63943388
+1	838	1738177505093072218	pyqflib/CMakeFiles/pyqflib.dir/pymodule.cpp.o	3edf12c56115778a
+839	884	1738177505930935098	/Users/mackenziequ/Documents/MSQF/Spring2025/AdvancedCpp/qflib/qflib-0.1.0/pyqflib/qflib/pyqflib.dylib	339706d278881bdb

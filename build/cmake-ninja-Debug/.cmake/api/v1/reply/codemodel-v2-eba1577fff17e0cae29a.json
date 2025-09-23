@@ -1,0 +1,101 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.25"
+					},
+					"projectIndex" : 0,
+					"source" : "."
+				},
+				{
+					"build" : "qflib",
+					"jsonFile" : "directory-qflib-Debug-c0c128e0a5653b793771.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.25"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "qflib",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"build" : "pyqflib",
+					"jsonFile" : "directory-pyqflib-Debug-e105fac98631129ba116.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.25"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "pyqflib",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2
+					],
+					"name" : "qflib",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 2,
+					"id" : "pyqflib::@0eb22bf35bc0eae67ef1",
+					"jsonFile" : "target-pyqflib-Debug-67dc5d485bcb5ddcf9b6.json",
+					"name" : "pyqflib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "qflib::@009a73759cb313af52d6",
+					"jsonFile" : "target-qflib-Debug-93f45f53cc29969ede7c.json",
+					"name" : "qflib",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/mackenziequ/Documents/MSQF/Spring2025/AdvancedCpp/qflib/qflib-0.1.0/build/cmake-ninja-Debug",
+		"source" : "/Users/mackenziequ/Documents/MSQF/Spring2025/AdvancedCpp/qflib/qflib-0.1.0"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}

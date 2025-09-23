@@ -1,0 +1,14 @@
+[
+{
+  "directory": "/Users/mackenziequ/Documents/MSQF/Spring2025/AdvancedCpp/qflib/qflib-0.1.0/build/cmake-ninja-Debug",
+  "command": "/opt/homebrew/bin/aarch64-apple-darwin23-g++-14 -I/Users/mackenziequ/Documents/MSQF/Spring2025/AdvancedCpp/qflib/qflib-0.1.0/qflib/.. -fPIC -Wno-deprecated-declarations -Wno-attributes -g -std=gnu++20 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -fPIC -o qflib/CMakeFiles/qflib.dir/empty.cpp.o -c /Users/mackenziequ/Documents/MSQF/Spring2025/AdvancedCpp/qflib/qflib-0.1.0/qflib/empty.cpp",
+  "file": "/Users/mackenziequ/Documents/MSQF/Spring2025/AdvancedCpp/qflib/qflib-0.1.0/qflib/empty.cpp",
+  "output": "qflib/CMakeFiles/qflib.dir/empty.cpp.o"
+},
+{
+  "directory": "/Users/mackenziequ/Documents/MSQF/Spring2025/AdvancedCpp/qflib/qflib-0.1.0/build/cmake-ninja-Debug",
+  "command": "/opt/homebrew/bin/aarch64-apple-darwin23-g++-14 -DNPY_NO_DEPRECATED_API -Dpyqflib_EXPORTS -I/Users/mackenziequ/Documents/MSQF/Spring2025/AdvancedCpp/qflib/qflib-0.1.0/pyqflib/.. -I/Users/mackenziequ/miniconda3/envs/qfgb/include/python3.12 -I/Users/mackenziequ/miniconda3/envs/qfgb/lib/python3.12/site-packages/numpy/core/include -fPIC -Wno-deprecated-declarations -Wno-attributes -g -std=gnu++20 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -fPIC -o pyqflib/CMakeFiles/pyqflib.dir/pymodule.cpp.o -c /Users/mackenziequ/Documents/MSQF/Spring2025/AdvancedCpp/qflib/qflib-0.1.0/pyqflib/pymodule.cpp",
+  "file": "/Users/mackenziequ/Documents/MSQF/Spring2025/AdvancedCpp/qflib/qflib-0.1.0/pyqflib/pymodule.cpp",
+  "output": "pyqflib/CMakeFiles/pyqflib.dir/pymodule.cpp.o"
+}
+]
