@@ -18,3 +18,12 @@ y = [4, 5]
 op = qf.outerProd(x, y)
 print(f'x: {x}\ny: {y}')
 print(f'outerProd:\n{op}')
+
+#%%
+# function group 1
+print('=================')
+print('Analytic prices')
+
+#fwdprice
+fwdpx = qf.fwdPrice(spot = 100, timetoexp = 1.0, intrate = 0.02, divyield = 0.04)
+print(f'FwdPrice={fwdpx:.4f}')

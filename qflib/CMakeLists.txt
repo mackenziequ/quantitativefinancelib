@@ -1,5 +1,6 @@
 set(qflib_SOURCES 
-    empty.cpp 
+    math/stats/errorfunction.cpp
+    pricers/simplepricers.cpp
 )
 
 add_library(qflib STATIC ${qflib_SOURCES})

@@ -4,9 +4,9 @@
 */
 #include "pycpp.hpp"
 #include <qflib/defines.hpp>
+#include <qflib/math/stats/errorfunction.hpp>
+#include <qflib/math/stats/normaldistribution.hpp>
 #include <string>
-#include <stdexcept>
-#include <iostream>
 
 static 
 PyObject*  pyQfVersion(PyObject* pyDummy, PyObject* pyArgs)
@@ -28,8 +28,6 @@ PY_BEGIN;
   return asPyScalar(greet);
 PY_END;
 }
-
-
 
 static 
 PyObject* pyQfOuterProd(PyObject* pyDummy, PyObject* pyArgs)
@@ -59,42 +57,62 @@ PY_BEGIN;
 PY_END;
 }
 
-static 
-PyObject* pyQfPolyProd(PyObject* pyDummy, PyObject* pyArgs)
+static
+PyObject*  pyQfErf(PyObject* pyDummy, PyObject* pyArgs)
 {
-  PY_BEGIN; 
-  PyObject* pyArg1(NULL);
-  PyObject* pyArg2(NULL);
-  if (!PyArg_ParseTuple(pyArgs, "OO", &pyArg1, &pyArg2))
+PY_BEGIN;
+
+  PyObject* pyX(NULL);
+  if (!PyArg_ParseTuple(pyArgs, "O", &pyX))
     return NULL;
 
-  std::vector<double> vec1 = asDblVec(pyArg1);
-  std::vector<double> vec2 = asDblVec(pyArg2);
-
-  if (vec1.empty() || vec2.empty()){
-    throw std::invalid_argument("Input vectors may not be empty");
-  }
-  size_t size1 = vec1.size();
-  size_t size2 = vec2.size();
-
-  std::vector<double> polydeg(size1 + size2 - 1);
-  for (size_t i = 0; i < size1; i++){
-    for (size_t j = 0; j < size2; j ++){
-      polydeg[i+j] += vec1[i]*vec2[j];
-    }
-  }
-
-  while (!polydeg.empty() && polydeg.back() == 0){
-    polydeg.pop_back();
-  }
-
-  if (polydeg.empty()){
-    polydeg.push_back(0);
-  }
-  
-  // std::cout << "polydeg size: " << polydeg.size() << std::endl;
-
-  return asPyList(polydeg);
+  double x = asDouble(pyX);
+  return asPyScalar(qf::ErrorFunction::erf(x));
 PY_END;
 }
 
+static
+PyObject*  pyQfInvErf(PyObject* pyDummy, PyObject* pyArgs)
+{
+PY_BEGIN;
+
+  PyObject* pyX(NULL);
+  if (!PyArg_ParseTuple(pyArgs, "O", &pyX))
+    return NULL;
+
+  double x = asDouble(pyX);
+  return asPyScalar(qf::ErrorFunction::inverf(x));
+PY_END;
+}
+
+static
+PyObject*  pyQfNormalCdf(PyObject* pyDummy, PyObject* pyArgs)
+{
+PY_BEGIN;
+
+  PyObject* pyX(NULL);
+  if (!PyArg_ParseTuple(pyArgs, "O", &pyX))
+    return NULL;
+
+  double x = asDouble(pyX);
+  qf::NormalDistribution f;
+
+  return asPyScalar(f.cdf(x));
+PY_END;
+}
+
+static
+PyObject*  pyQfNormalInvCdf(PyObject* pyDummy, PyObject* pyArgs)
+{
+PY_BEGIN;
+
+  PyObject* pyX(NULL);
+  if (!PyArg_ParseTuple(pyArgs, "O", &pyX))
+    return NULL;
+
+  double x = asDouble(pyX);
+  qf::NormalDistribution f;
+
+  return asPyScalar(f.invcdf(x));
+PY_END;
+}
