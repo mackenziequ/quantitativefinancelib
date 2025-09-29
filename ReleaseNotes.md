@@ -1,5 +1,23 @@
 QFLIB Release Notes
 ====================
+VERSION 0.3.0
+-------------
+
+### Modifications
+
+1. In `qflib/pricers/simplepricers.hpp` and `simplepricers.cpp`
+  Added implementation of pricing functions digitalOptionBS and europeanOptionBS
+
+2. In file `pyqflib/pyfunctions1.cpp`.
+  Added definition of functions pyQfDigiBS and pyQfEuroBS.
+
+3. In files `pyqflib/pymodule.cpp` and `pyqflib/qflib/__init__.py`
+    Added registration for functions qf.digiBS and qf.euroBS.
+
+4. In files `examples/Python/qflib-examples.py` and `examples/Python/qflib-examples.ipynb`
+    Added example calls to qf.digiBS and qf.euroBS.
+
+
 
 VERSION 0.2.0
 -------------

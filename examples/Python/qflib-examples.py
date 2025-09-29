@@ -26,4 +26,15 @@ print('Analytic prices')
 
 #fwdprice
 fwdpx = qf.fwdPrice(spot = 100, timetoexp = 1.0, intrate = 0.02, divyield = 0.04)
-print(f'FwdPrice={fwdpx:.4f}')
+print('Forward price analytic solution')
+print(f'Price={fwdpx:.4f}')
+
+digi = qf.digiBS(payofftype = 1, spot = 100, timetoexp = 1.0, strike = 100,
+                 intrate = 0.02, divyield = 0.04, volatility = 0.2)
+print('Digital option using Black-Scholes analytic solution')
+print(f'Price={digi:.4f}')
+
+euro = qf.euroBS(payofftype = 1, spot = 100, timetoexp = 1.0, strike = 100,
+                intrate = 0.02, divyield = 0.04, volatility = 0.4)
+print('European option using Black-Scholes analytic solution')
+print(f'Price={euro:.4f}')
