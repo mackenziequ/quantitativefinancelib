@@ -1,5 +1,32 @@
 QFLIB Release Notes
 ====================
+VERSION 0.4.0
+-------------
+
+### Additions
+
+1. New file `qflib/math/matrix.hpp`.
+	It defines aliases for the Vector and Matrix classes to be used in numerical work.
+
+2. New file `pyqflib/pyutils.hpp`.
+	It implements the utility functions asVector, asMatrix, asNumPy
+
+
+### Modifications
+
+1. Qflib now has dependency on the armadillo C++ matrix library.
+  All `CMakeLists.txt` files have been updated.
+
+2. In file `pyqflib/pyfunctions0.cpp`.
+  Added definition of function pyQfEchoMatrix
+
+3. In files `pyqflib/pymodule.cpp` and `pyqflib/qflib/__init__.py`
+    Added registration for function qf.echoMatrix.
+
+4. In files `examples/Python/qflib-examples.py` and `examples/Python/qflib-examples.ipynb`
+    Added example calls to qf.echoMatrix.
+
+
 VERSION 0.3.0
 -------------
 

@@ -7,6 +7,7 @@ add_library(qflib STATIC ${qflib_SOURCES})
 
 target_include_directories(qflib PRIVATE 
     .. 
+    ${THIRDPARTY_DIRECTORY}/armadillo-${ARMA_VERSION}/include
 )
 
 # compiler and linker option adjustments for targets

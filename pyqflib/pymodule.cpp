@@ -23,19 +23,20 @@ static PyMethodDef PyQflibMethods[] =
   { "__echoStrArray__", echoStrArray, METH_VARARGS, "echoes an 1D array of strings" },
   { "__echoDblArray2D__", echoDblArray2D, METH_VARARGS, "echoes a 2D array of doubles" },
   { "__echoDblVecField__", echoDblVecField, METH_VARARGS, "echoes an 1D array of doubnles in an object field" },
-  { "erf", pyQfErf, METH_VARARGS, "the value of the error function." },
-  { "invErf", pyQfInvErf, METH_VARARGS, "the value of the inverse error function." },
-  { "normalCdf", pyQfNormalCdf, METH_VARARGS, "the value of the standard normal cumulative distribution." },
-  { "normalInvCdf", pyQfNormalInvCdf, METH_VARARGS, "the value of the inverse standard normal cumulative distribution." },
 // functions 0
   { "version", pyQfVersion, METH_VARARGS, "qflib library version"},
   { "sayHello", pyQfSayHello, METH_VARARGS, "says hello"},
   { "outerProd", pyQfOuterProd, METH_VARARGS, "outproduct of two vectors"},
+  { "erf", pyQfErf, METH_VARARGS, "the value of the error function." },
+  { "invErf", pyQfInvErf, METH_VARARGS, "the value of the inverse error function." },
+  { "normalCdf", pyQfNormalCdf, METH_VARARGS, "the value of the standard normal cumulative distribution." },
+  { "normalInvCdf", pyQfNormalInvCdf, METH_VARARGS, "the value of the inverse standard normal cumulative distribution." },
+  { "echoMatrix", pyQfEchoMatrix, METH_VARARGS, "echoes a matrix" },
 // functions 1
   { "fwdPrice", pyQfFwdPrice, METH_VARARGS, "the forward price of an asset" },
-  { "qFwdPrice", pyQfQuantoFwdPrice, METH_VARARGS, "the quanto forward price of an asset" },
+  { "digiBS", pyQfDigiBS, METH_VARARGS, "price of a digital option in the Black-Scholes model." },
+  { "euroBS", pyQfEuroBS, METH_VARARGS, "price of a European option in the Black-Scholes model." },
   {NULL, NULL, 0, NULL}
-
 };
 
 // Definition of module

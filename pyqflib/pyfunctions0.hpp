@@ -2,7 +2,7 @@
 @file  pyfunctions0.hpp
 @brief Implementation of Python callable functions
 */
-#include "pycpp.hpp"
+#include <pyqflib/pyutils.hpp>
 #include <qflib/defines.hpp>
 #include <qflib/math/stats/errorfunction.hpp>
 #include <qflib/math/stats/normaldistribution.hpp>
@@ -114,5 +114,18 @@ PY_BEGIN;
   qf::NormalDistribution f;
 
   return asPyScalar(f.invcdf(x));
+PY_END;
+}
+
+static 
+PyObject*  pyQfEchoMatrix(PyObject* pyDummy, PyObject* pyArgs)
+{
+PY_BEGIN;
+  PyObject* pyMat(NULL);
+  if (!PyArg_ParseTuple(pyArgs, "O", &pyMat))
+    return NULL;
+
+  qf::Matrix mat = asMatrix(pyMat);
+  return asNumpy(mat);
 PY_END;
 }

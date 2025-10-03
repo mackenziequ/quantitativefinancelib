@@ -1,56 +1,34 @@
-# set location of python headers and libraries
-if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")           # VC++ on Windows
-    set(PYTHON_HOME $ENV{LOCALAPPDATA}/Programs/Miniconda3/envs/qfgb)
-    set(PYTHON_INCLUDE_DIRECTORY ${PYTHON_HOME}/include)
-    set(NUMPY_INCLUDE_DIRECTORY ${PYTHON_HOME}/Lib/site-packages/numpy/core/include)
-    set(PYTHON_LIBRARY_PATH ${PYTHON_HOME}/libs/python312.lib)
-elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")       # GCC on Linux
-    set(PYTHON_HOME $ENV{HOME}/miniconda3/envs/qfgb)
-    set(PYTHON_INCLUDE_DIRECTORY ${PYTHON_HOME}/include/python3.12)
-    set(NUMPY_INCLUDE_DIRECTORY ${PYTHON_HOME}/lib/python3.12/site-packages/numpy/core/include)
-    set(PYTHON_LIBRARY_PATH ${PYTHON_HOME}/lib/libpython3.12.so)
+cmake_minimum_required(VERSION 3.25)
+set(CMAKE_CXX_STANDARD 20)
+project(qflib)
+
+# project-wide configurations
+set(THIRDPARTY_DIRECTORY ${CMAKE_SOURCE_DIR}/..)
+set(ARMA_VERSION 14.2.2)
+
+# set location of artifacts
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
+
+# set the debug postfix
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    set(CMAKE_DEBUG_POSTFIX "-gd")
+elseif(CMAKE_BUILD_TYPE STREQUAL "Release")
+    set(CMAKE_DEBUG_POSTFIX "")
+endif()
+
+# global compiler and linker option adjustments
+if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+    set(CMAKE_CXX_FLAGS "/EHsc /permissive-")
+	# use /Zi for Debug configs
+	string(REGEX REPLACE "/Z[iI7]" "" TEMP "${CMAKE_CXX_FLAGS_DEBUG}")
+    set(CMAKE_CXX_FLAGS_DEBUG "${TEMP} /Zi")
+elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    set(CMAKE_CXX_FLAGS "-fPIC -Wno-deprecated-declarations -Wno-attributes")
 else()
-    message(FATAL_ERROR "Unsupported C++ compiler")
-
+    message(FATAL_ERROR "unknown compiler; only MSVC and GNU are currently supported" )
 endif()
 
-set(pyqflib_SOURCES
-    pymodule.cpp 	
-)
-
-add_library(pyqflib SHARED ${pyqflib_SOURCES})
-
-add_dependencies(pyqflib qflib)
-
-target_include_directories(pyqflib PRIVATE
-    .. 
-    ${PYTHON_INCLUDE_DIRECTORY} 
-    ${NUMPY_INCLUDE_DIRECTORY} 
-)
-
-# remove prefix from the DLL name
-set_target_properties(pyqflib PROPERTIES PREFIX "")
-set_target_properties(pyqflib PROPERTIES DEBUG_POSTFIX "")
-# silence the numpy deprecation message
-set_target_properties(pyqflib PROPERTIES COMPILE_DEFINITIONS "NPY_NO_DEPRECATED_API")
-
-# linker option adjustments for supported compilers
-if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")         # VC++ on Windows
-    # adjust suffix and output location
-    set_target_properties(pyqflib PROPERTIES SUFFIX ".pyd")
-    set_target_properties(pyqflib PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/qflib)   
-    # link libraries and options
-    target_link_libraries(pyqflib PRIVATE
-        ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}/qflib${CMAKE_DEBUG_POSTFIX}.lib 
-        ${PYTHON_LIBRARY_PATH}        
-    )
-    target_link_options(pyqflib PRIVATE /MANIFEST:NO /INCREMENTAL:NO /DEBUG)    
-elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")       # GCC on Linux
-    # adjust output location
-    set_target_properties(pyqflib PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/qflib)
-    # link libraries and options (assuming GNU)
-    target_link_libraries(pyqflib PRIVATE 
-        ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}/libqflib${CMAKE_DEBUG_POSTFIX}.a 
-        ${PYTHON_LIBRARY_PATH} 
-    )
-endif()
+add_subdirectory(qflib)
+add_subdirectory(pyqflib)
